@@ -8,14 +8,20 @@
   /* Para mais informações, consultar a dcoumentação completa em: https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties */
 
   /* FONTS */
-  --font-heading: "Fira Sans Condensed", sans-serif;
-  --font-subheading: "Oxygen", sans-serif;
+  /* --font-heading: "Fira Sans Condensed", sans-serif; */
+  --font-heading: "Oxygen", sans-serif;
   --font-body: "PT Sans", sans-serif;
 
   /* Colors */
-  --clr-blue-700: #0055ad;
+  --clr-gray-900: #28394b;
+  --clr-blue-800: #0055ad;
+  --clr-blue-700:#1866c0;
+  --clr-blue-300: #5f98fa;  
+  --clr-white-300: #f8f9fb;
 
-  --color-dark-bg: var(var(--clr-blue-700));
+  --bg-dark: var(var(--clr-blue-700));
+
+  --color-text-primary: var(--clr-gray-900);
 }
 
 /* O que são Layers em css? */
@@ -23,7 +29,6 @@
 
 /* Syntax : @layer nome-da-camada {regras css} */
 /* Para mais informações, consultar a documentação completa em: https://developer.mozilla.org/pt-BR/docs/Web/CSS/@layer */
-
 
 /* Definindp um reset css */
 /* Um reset Css como o próprio nome diz, é um arquivo onde ele redefine os estilos pré-formatados pelo html permitindo que o 
@@ -126,4 +131,16 @@ usuário faça a estilização do zero */
 /* Essa camada é onde nós concentramos estilos que são aplicados em diversas páginas no nosso projeto, como estilo da barra de navegação, footer, botões e etc. */
 /* Tudo componente que se repetir em outras páginas além da home, a estilização deve entrar aqui nessa camada, caso contrário, podem criar uma camada individual para estilizar o componente em específico */
 @layer global {
+  /* Definindo uma fonte especifíca para os títulos e sub-títulos */
+  h1, h2, h3 {
+    font-family: var(--font-heading);
+  }
+
+  
+
+  /* Definindo propriedades para o body */
+  body {
+    font-family: var(--font-body);
+    color: var(--color-text-primary);
+  }
 }
