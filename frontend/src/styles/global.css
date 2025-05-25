@@ -1,19 +1,129 @@
 :root {
+  /* O que são váriaveis css? */
+  /* As variáveis de CSS, que também são chamadas de propriedades customizadas, trazem grandes benefícios 
+  e vão funcionar de forma bem semelhante às variáveis de linguagens de programação, ou seja, sua maior função é 
+  armazenar valores que serão utilizados posteriormente no código */
 
-    /* Aqui estamos criando váriaveis css para padronizar as cores do nosso site e facilitar a inserção de novos valores de  propriedas dentro dos nossos seletores  */
-    /* Syntax para a criação de uma váriavel css -> -- + [nome da váriavel] + valor da propriedade que você quer referenciar  */
+  /* Syntax para a criação de uma váriavel css -> -- + [nome da váriavel] + valor da propriedade que você quer referenciar  */
+  /* Para mais informações, consultar a dcoumentação completa em: https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties */
 
-    /* FONTS */
-    --font-heading: "Fira Sans Condensed", sans-serif;
-    --font-subheading: "Oxygen", sans-serif;
-    --font-body: "PT Sans", sans-serif;
+  /* FONTS */
+  --font-heading: "Fira Sans Condensed", sans-serif;
+  --font-subheading: "Oxygen", sans-serif;
+  --font-body: "PT Sans", sans-serif;
 
-    /* Colors */
-    --clr-blue-700: #0055ad;
+  /* Colors */
+  --clr-blue-700: #0055ad;
 
-    --color-dark-bg: var(var(--clr-blue-700));
+  --color-dark-bg: var(var(--clr-blue-700));
 }
 
-@layer reset_css {
+/* O que são Layers em css? */
+/* A regra @layer é uma regra recente no css e é utilizada para definir uma camada de cascata, também definindo a ordem de prioridade quando temos mais de uma camada. O beneficio dela é que podemos escrever um código CSS mais limpo e organizado por camadas do site e eliminamos a necessidade de ter vários arquivos css no site, podendo centralizar as coisas em apenas um definidos por layers */
 
+/* Syntax : @layer nome-da-camada {regras css} */
+/* Para mais informações, consultar a documentação completa em: https://developer.mozilla.org/pt-BR/docs/Web/CSS/@layer */
+
+
+/* Definindp um reset css */
+/* Um reset Css como o próprio nome diz, é um arquivo onde ele redefine os estilos pré-formatados pelo html permitindo que o 
+usuário faça a estilização do zero */
+@layer reset_css {
+  /* reset.css */
+
+  /* 1. Remove margens, paddings e bordas padrões */
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* 2. Remove estilizações padrão de elementos de formulário */
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    appearance: none;
+  }
+
+  /* 3. Remove decoração de links */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* 4. Lista sem estilo */
+  ul,
+  ol {
+    list-style: none;
+  }
+
+  /* 5. Define altura total */
+  html,
+  body {
+    height: 100%;
+  }
+
+  /* 6. Usa fonte consistente e previne bugs com linha base */
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-family: system-ui, sans-serif;
+    background-color: #fff;
+    color: #000;
+  }
+
+  /* 7. Tabelas sem espaçamento extra */
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  /* 8. Imagens e mídias responsivas por padrão */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* 9. Remove aspas automáticas em blockquote e q */
+  blockquote,
+  q {
+    quotes: none;
+  }
+  blockquote::before,
+  blockquote::after,
+  q::before,
+  q::after {
+    content: "";
+  }
+
+  /* 10. Corrige fonte em elementos de código */
+  code,
+  pre {
+    font-family: monospace, monospace;
+  }
+
+  /* 11. Scroll suave (opcional) */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Essa camada é onde nós concentramos estilos que são aplicados em diversas páginas no nosso projeto, como estilo da barra de navegação, footer, botões e etc. */
+/* Tudo componente que se repetir em outras páginas além da home, a estilização deve entrar aqui nessa camada, caso contrário, podem criar uma camada individual para estilizar o componente em específico */
+@layer global {
 }
