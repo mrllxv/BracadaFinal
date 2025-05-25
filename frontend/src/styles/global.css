@@ -1,0 +1,19 @@
+:root {
+
+    /* Aqui estamos criando váriaveis css para padronizar as cores do nosso site e facilitar a inserção de novos valores de  propriedas dentro dos nossos seletores  */
+    /* Syntax para a criação de uma váriavel css -> -- + [nome da váriavel] + valor da propriedade que você quer referenciar  */
+
+    /* FONTS */
+    --font-heading: "Fira Sans Condensed", sans-serif;
+    --font-subheading: "Oxygen", sans-serif;
+    --font-body: "PT Sans", sans-serif;
+
+    /* Colors */
+    --clr-blue-700: #0055ad;
+
+    --color-dark-bg: var(var(--clr-blue-700));
+}
+
+@layer reset_css {
+
+}
