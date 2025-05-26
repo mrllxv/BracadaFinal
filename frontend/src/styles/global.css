@@ -31,6 +31,8 @@
   --spacing-percent-10: 10%;
   --spacing-percent-15: 15%;
 
+  --fs-lg: 3rem;
+
    /* Escala baseada em múltiplos de 4px (1rem = 16px) */
 
   --spacing-xs: 0.25rem;    /* 4px */
@@ -185,6 +187,7 @@ usuário faça a estilização do zero */
   /* Definindo propriedades para o body */
   body {
     font-family: var(--font-body);
+    background: var(--bg-light);
     color: var(--color-text-primary);
   }
 
@@ -192,4 +195,58 @@ usuário faça a estilização do zero */
   .hidden {
     display:none;
   }
+
+  header {
+    height: var(--spacing-percent-15);
+    background: var(--bg-dark);
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-3xl);
+    padding: var(--spacing-sm) var(--spacing-lg);
+
+    box-shadow: 7px 7px 12px #0000003f;
+  }
+
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: var(--spacing-xl);
+    
+  }
+  
+  nav__title {
+    font-size: var(--fs-lg);
+  }
+
+  .nav__list {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: var(--spacing-3xl);
+    width: var(--container-md);
+  }
+
+  .nav__list-item {
+    width: 15%;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    padding: var(--spacing-md);
+    border-radius: var(--spacing-sm);
+    transition: all .5s ease-in-out;
+    cursor: pointer;
+  }
+
+
+  .nav__list-item--focus:focus, .nav__list-item--hover:hover {
+    background-color: var(--bg-light);
+    color: var(--color-text-primary);
+    transition: all .5s ease-in-out;
+  }
+
 }
