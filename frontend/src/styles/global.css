@@ -19,16 +19,60 @@
   --clr-blue-300: #5f98fa;  
   --clr-white-300: #f8f9fb;
 
-  --bg-dark: var(var(--clr-blue-700));
+  --bg-dark: var(--clr-blue-700);
+  --bg-light:var(--clr-white-300);
 
   --color-text-primary: var(--clr-gray-900);
+  --color-text-secondary: var(--clr-white-300);
+
+  /* Váriaveis para Espaçamento */
+  /* Espaçamentos em porcentagem (úteis para layouts fluidos) */
+  --spacing-percent-5: 5%;
+  --spacing-percent-10: 10%;
+  --spacing-percent-15: 15%;
+
+   /* Escala baseada em múltiplos de 4px (1rem = 16px) */
+
+  --spacing-xs: 0.25rem;    /* 4px */
+  --spacing-sm: 0.5rem;     /* 8px */
+  --spacing-md: 1rem;       /* 16px */
+  --spacing-lg: 1.5rem;     /* 24px */
+  --spacing-xl: 2rem;       /* 32px */
+  --spacing-2xl: 2.5rem;    /* 40px */
+  --spacing-3xl: 4rem;      /* 64px */
+
+  /* Espaçamentos relativos adicionais */
+  --spacing-05: 0.05rem;    /* ~0.8px */
+  --spacing-1-25: 1.25rem;  /* 20px */
+  --spacing-1-75: 1.75rem;  /* 28px */
+  --spacing-2-25: 2.25rem;  /* 36px */
+
+  /* Breakpoints */
+  --breakpoint-xs: 20rem;   /* 320px */
+  --breakpoint-sm: 30rem;   /* 480px */
+  --breakpoint-md: 48rem;   /* 768px */
+  --breakpoint-lg: 64rem;   /* 1024px */
+  --breakpoint-xl: 80rem;   /* 1280px */
+  --breakpoint-2xl: 96rem;  /* 1536px */
+
+   /* Larguras máximas para containers, baseadas nos breakpoints */
+
+  --container-xs: 100%;       /* Para telas muito pequenas que necessitam do uso total */
+  --container-sm: 28rem;      /* 448px */
+  --container-md: 44rem;      /* 704px */
+  --container-lg: 60rem;      /* 960px */
+  --container-xl: 72rem;      /* 1152px */
+  --container-2xl: 80rem;     /* 1280px */
+  --container-full: 100vw;    /* Full width */
 }
 
 /* O que são Layers em css? */
-/* A regra @layer é uma regra recente no css e é utilizada para definir uma camada de cascata, também definindo a ordem de prioridade quando temos mais de uma camada. O beneficio dela é que podemos escrever um código CSS mais limpo e organizado por camadas do site e eliminamos a necessidade de ter vários arquivos css no site, podendo centralizar as coisas em apenas um definidos por layers */
+/* A regra @layer é uma regra recente no css e é utilizada para definir uma camada de cascata na página, também definindo a ordem de prioridade quando temos mais de uma camada. O beneficio dela é que podemos escrever um código CSS mais limpo e organizado por camadas do site e eliminamos a necessidade de ter vários arquivos css para diferentes páginas do nosso site, podendo centralizar as coisas em apenas um arquivo definidos por layers, assim também reduzimos o tempo de load dos estilos da página já que vão estar concentrados em apenas um lugar */
 
 /* Syntax : @layer nome-da-camada {regras css} */
 /* Para mais informações, consultar a documentação completa em: https://developer.mozilla.org/pt-BR/docs/Web/CSS/@layer */
+
+
 
 /* Definindp um reset css */
 /* Um reset Css como o próprio nome diz, é um arquivo onde ele redefine os estilos pré-formatados pelo html permitindo que o 
@@ -36,7 +80,7 @@ usuário faça a estilização do zero */
 @layer reset_css {
   /* reset.css */
 
-  /* 1. Remove margens, paddings e bordas padrões */
+  /* 1. Remove margens, paddings e bordas padrões de todos elementos do html */
   *,
   *::before,
   *::after {
@@ -66,13 +110,13 @@ usuário faça a estilização do zero */
     text-decoration: none;
   }
 
-  /* 4. Lista sem estilo */
+  /* 4. Remove o estilo das listas não-ordenadas e das listas ordenadas */
   ul,
   ol {
     list-style: none;
   }
 
-  /* 5. Define altura total */
+  /* 5. Define altura da tela */
   html,
   body {
     height: 100%;
@@ -87,7 +131,7 @@ usuário faça a estilização do zero */
     color: #000;
   }
 
-  /* 7. Tabelas sem espaçamento extra */
+  /* 7. Remove o espaçamento extra do elemento tabela */
   table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -116,7 +160,7 @@ usuário faça a estilização do zero */
     content: "";
   }
 
-  /* 10. Corrige fonte em elementos de código */
+  /* 10. Corrige fonte em elementos de formatação de código */
   code,
   pre {
     font-family: monospace, monospace;
@@ -128,15 +172,13 @@ usuário faça a estilização do zero */
   }
 }
 
-/* Essa camada é onde nós concentramos estilos que são aplicados em diversas páginas no nosso projeto, como estilo da barra de navegação, footer, botões e etc. */
-/* Tudo componente que se repetir em outras páginas além da home, a estilização deve entrar aqui nessa camada, caso contrário, podem criar uma camada individual para estilizar o componente em específico */
+/* A camada Global é onde nós concentramos estilos que são aplicados em diversas páginas no nosso projeto, como estilo da barra de navegação, footer, botões e etc. */
+/* Todo componente que se repetir em outras páginas além da home, a estilização deve entrar aqui nessa camada, caso contrário, podem criar uma camada individual para estilizar o componente em específico */
 @layer global {
   /* Definindo uma fonte especifíca para os títulos e sub-títulos */
   h1, h2, h3 {
     font-family: var(--font-heading);
   }
-
-  
 
   /* Definindo propriedades para o body */
   body {
