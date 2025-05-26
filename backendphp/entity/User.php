@@ -1,4 +1,6 @@
 <?php
+require_once "../database/connection.php";
+require_once 'Perfil.php';
 
 class User
 {
@@ -8,21 +10,32 @@ class User
     private string $senha;
     private DateTime $data_nascimento;
     private string $frase_secreta;
-    private string $tipo_perfil;
+
+    //propriedade do tipo perfil
+    private int $cod_tipo_perfil;
+
 
     //Construtor do usuario
-    public function __construct(int $id_usuario, string $nome, string $email, string $senha, DateTime $data_nascimento, string $frase_secreta, string $tipo_perfil)
+    public function __construct(int $id_usuario, string $nome, string $email, string $senha, DateTime $data_nascimento, string $frase_secreta, int $cod_tipo_perfil, bool $senhaJaHash = false)
     {
         $this->id_usuario = $id_usuario;
         $this->nome = $nome;
         $this->email = $email;
-        $this->senha = $senha;
+        // se a senha ja estiver criptografada (como no login), armazena direto
+        // se nao, aplica o hash antes de salvar
+        //utilizando operador ternario
+        $this->senha = $senhaJaHash ? $senha : password_hash($senha, PASSWORD_DEFAULT);
         $this->data_nascimento = $data_nascimento;
         $this->frase_secreta = $frase_secreta;
-        $this->tipo_perfil = $tipo_perfil;
+        $this->cod_tipo_perfil = $cod_tipo_perfil;
     }
 
+
     //GETTERS
+    public function getTipoPerfilId(): int
+    {
+        return $this->cod_tipo_perfil;
+    }
 
     public function getNome()
     {
@@ -42,22 +55,16 @@ class User
         return $this->frase_secreta;
     }
 
-    public function getSenha()
-    {
-        return $this->senha;
-    }
-
-    public function getPerfil()
-    {
-        return $this->tipo_perfil;
-    }
-
     public function getId()
     {
         return $this->id_usuario;
     }
 
     //SETTERS
+    public function setTipoPerfilId(int $cod_tipo_perfil): void
+    {
+        $this->cod_tipo_perfil = $cod_tipo_perfil;
+    }
 
     public function setNome(string $nome): void
     {
@@ -78,19 +85,14 @@ class User
     {
         $this->frase_secreta = $frase_secreta;
     }
-    // utilizando a funçao nativa password_hash para nao armazenar a senha em texto puro
+    
     public function setSenha(string $senha): void
     {
         $this->senha = password_hash($senha, PASSWORD_DEFAULT);
     }
 
-    public function setPerfil(string $tipo_perfil): void
+    public function getDescricaoTipoPerfil(): string
     {
-        $this->tipo_perfil = $tipo_perfil;
-    }
-
-    public function setId(int $id_usuario): void
-    {
-        $this->id_usuario = $id_usuario;
+        return Perfil::descricao($this->cod_tipo_perfil);
     }
 }
