@@ -42,8 +42,8 @@ class Login
                     true  // senha já hashada
                 );
                 //armazena o objeto User do usuário logado
-                //utilizacao do serialize para transformar o objeto em texto na sessao
-                $_SESSION['usuario'] = serialize($usuario);
+                //utilizacao do json_encode para transformar o objeto e enviar para o javascript
+                $_SESSION['usuario'] = json_encode($usuario->toArray());
                 return true;
             }
         }

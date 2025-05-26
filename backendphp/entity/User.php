@@ -95,4 +95,17 @@ class User
     {
         return Perfil::descricao($this->cod_tipo_perfil);
     }
+
+    public function toArray(): array
+    {
+        return [
+            'id_usuario' => $this->id_usuario,
+            'nome' => $this->nome,
+            'email' => $this->email,
+            'data_nascimento' => $this->data_nascimento->format('Y-m-d'),
+            'frase_secreta' => $this->frase_secreta,
+            'cod_tipo_perfil' => $this->cod_tipo_perfil,
+            'descricao_perfil' => $this->getDescricaoTipoPerfil()
+        ];
+    }
 }
