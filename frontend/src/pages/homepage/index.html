@@ -15,6 +15,35 @@
     <title>Home | Braçada final</title>
   </head>
   <body>
+
+    <!-- Para nomeção de classes aqui no html, estamos utlizando a convenção  de nomenclatura BEM css para facilitar na organização do codigo e na especificidade do CSS -->
+
+    <!-- BEM é um acrônimo para Block, Element e Modifier onde
+      Block é uma entidade autônoma que é significativa por si só. 
+      Exemplo -> header, container, menu, checkbox,input
+
+      Element é uma parte de um bloco que não tem significado independente e está semanticamente vinculada ao seu bloco, como se fosse um elemento-filho
+      Exemplo -> menu item, list item, checkbox caption, header title
+
+      Modifier é uma flag em um bloco ou elemento que são usadas para referneciar alterações do comportamento da entidade.
+      Exemplo -> disabled, highlighted, checked, fixed, size big,color yellow
+    -->
+
+    <!-- Syntax
+      uma classe CSS composta de Nome do Bloco + 2 underlines + nome do Elemento: .[Bloco]__[Elemento].
+      Exemplo -> header__home-btn (onde o header é o bloco e o elemento é o home-btn)
+
+      caso o block ou elemento tiver um modifier, a escrita da classe é composta pelo 
+      nome de um Bloco ou Modificador + 2 hífens + o nome do Modificador: [Bloco|Elemento]--[Modificador].
+      Exemplo -> nav__buttons--hover (O bloco é nav, buttons é o elemento e o modificador de buttons é o hover)
+
+
+      Para mais informações e sanar as dúvidas, consultar as documentações abaixo:
+      https://desenvolvimentoparaweb.com/css/bem/
+      https://getbem.com/introduction/
+    -->
+
+    <!-- Estruturando o cabeçalho do site e a barra de navegação -->
     <header class="header">
       <a href="#" class="header__home-btn">
         <img
@@ -34,10 +63,29 @@
         </ul>
 
         <div class="nav__container-buttons">
-          <button class="button nav__buttons">Cadastrar</button>
-          <button class="button nav__buttons">Entrar</button>
+          <button class="button nav__buttons nav__buttons--hover nav__buttons--focus">Cadastrar</button>
+          <button class="button nav__buttons nav__buttons--hover nav__buttons--focus">Entrar</button>
         </div>
       </nav>
     </header>
+
+    <!-- Estruturando o html para o banner da página (obs: a imagem do banner será colocada via estilização no css) -->
+
+    <section class="banner" id="banner">
+      <div class="banner__infos-container">
+        <h2 class="banner__infos-title">
+          Esporte Olímpico Natação
+        </h2>
+        <p class="banner__infos-copy">
+          Conheça em primeira mão a história, os principais atletas e os melhores momentos do esporte queridinho das olimpíadas.
+        </p>
+        <p class="banner__infos-copy">Venha viver a mágia da natação conosco</p>
+
+        <a href="main" class="button banner__infos-button banner__infos-button--hover banner__infos-button--focus">Mais informações</a>
+      </div>
+    </section>
+
+    
+
   </body>
 </html>
