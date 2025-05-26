@@ -174,7 +174,9 @@ usuário faça a estilização do zero */
 
 /* A camada Global é onde nós concentramos estilos que são aplicados em diversas páginas no nosso projeto, como estilo da barra de navegação, footer, botões e etc. */
 /* Todo componente que se repetir em outras páginas além da home, a estilização deve entrar aqui nessa camada, caso contrário, podem criar uma camada individual para estilizar o componente em específico */
+
 @layer global {
+  
   /* Definindo uma fonte especifíca para os títulos e sub-títulos */
   h1, h2, h3 {
     font-family: var(--font-heading);
@@ -184,5 +186,10 @@ usuário faça a estilização do zero */
   body {
     font-family: var(--font-body);
     color: var(--color-text-primary);
+  }
+
+  /* Definindo propriedades para a classe hidden que é usada para esconder elementos da tela quando necessário */
+  .hidden {
+    display:none;
   }
 }
