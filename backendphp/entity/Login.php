@@ -37,7 +37,6 @@ class Login
                     $row['email'],
                     $row['senha'], // já hashada
                     new DateTime($row['data_nascimento']),
-                    $row['frase_secreta'],
                     $row['tipo_perfil'],
                     true  // senha já hashada
                 );

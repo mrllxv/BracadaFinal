@@ -16,7 +16,7 @@ class User
 
 
     //Construtor do usuario
-    public function __construct(int $id_usuario, string $nome, string $email, string $senha, DateTime $data_nascimento, string $frase_secreta, int $cod_tipo_perfil, bool $senhaJaHash = false)
+    public function __construct(int $id_usuario, string $nome, string $email, string $senha, DateTime $data_nascimento, int $cod_tipo_perfil, bool $senhaJaHash = false)
     {
         $this->id_usuario = $id_usuario;
         $this->nome = $nome;
@@ -26,7 +26,6 @@ class User
         //utilizando operador ternario
         $this->senha = $senhaJaHash ? $senha : password_hash($senha, PASSWORD_DEFAULT);
         $this->data_nascimento = $data_nascimento;
-        $this->frase_secreta = $frase_secreta;
         $this->cod_tipo_perfil = $cod_tipo_perfil;
     }
 
@@ -91,11 +90,19 @@ class User
         $this->senha = password_hash($senha, PASSWORD_DEFAULT);
     }
 
+    //verifica a frase secreta do usuario
+    public function verificarFraseSecreta(string $frase): bool
+    {
+        return $this->frase_secreta === $frase;
+    }
+
+    //pega a descricao do tipo de perfil (Usuario ou Adm)
     public function getDescricaoTipoPerfil(): string
     {
         return Perfil::descricao($this->cod_tipo_perfil);
     }
 
+    //converte o objeto para array
     public function toArray(): array
     {
         return [
@@ -103,7 +110,6 @@ class User
             'nome' => $this->nome,
             'email' => $this->email,
             'data_nascimento' => $this->data_nascimento->format('Y-m-d'),
-            'frase_secreta' => $this->frase_secreta,
             'cod_tipo_perfil' => $this->cod_tipo_perfil,
             'descricao_perfil' => $this->getDescricaoTipoPerfil()
         ];
