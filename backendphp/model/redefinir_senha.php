@@ -14,4 +14,12 @@ if (isset($_POST['email']) && isset($_POST['frase_secreta']) && isset($_POST['no
     }
 
     $conn = connect();
+
+    //buscar usuário pelo e-mail
+    //utilizando stmt para otimização das consultas sql
+    $stmt = $conn->prepare("SELECT * FROM usuario WHERE email = ?");
+    //informa que o parâmetro é uma string "s" e faz referencia da variável $email ao ? na query preparada.
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
 }
