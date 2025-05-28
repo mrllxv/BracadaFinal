@@ -1,4 +1,6 @@
 <?php
+//inicia a sessao para poder usar $_SESSION
+session_start(); 
 require_once '../database/connection.php';
 require_once '../entity/Login.php';
 
@@ -16,10 +18,18 @@ try {
         //inicializando o login do usuario
         $login = new Login($conn);
         //utilizando o metodo autenticar da classe login
-        if ($login->autenticar($email, $senha)) {
+        $usuario = $login->autenticar($email, $senha);
+        
+        if ($usuario) {
+            //armazena os dados essenciais do usuario na sessao
+            $_SESSION['id_usuario'] = $usuario['id_usuario'];
+            $_SESSION['nome'] = $usuario['nome'];
+            $_SESSION['perfil'] = $usuario['id_tipo'];
+
             echo "Login realizado com sucesso.";
+
         } else {
-            echo "E-mail ou senha inválidos.";
+            echo "Email ou senha inválidos.";
         }
         $conn->close();
     } else {

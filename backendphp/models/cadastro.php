@@ -1,21 +1,22 @@
 <?php
 require_once '../database/connection.php';
 require_once '../entity/User.php';
+require_once '../entity/Perfil.php';
 
-if (isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['data_nascimento'])) {
+if (isset($_POST['nome'], $_POST['email'], $_POST['senha'], $_POST['data_nascimento'])) {
 
-    $nome = ($_POST['nome']);
-    $email = ($_POST['email']);
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
     $senha = $_POST['senha'];
     $data_nascimento = $_POST['data_nascimento'];
 
-    if (empty($nome) || empty($email) || empty($senha) || empty($data_nascimento) || empty($frase_secreta)) {
+    if (empty($nome) || empty($email) || empty($senha) || empty($data_nascimento)) {
         echo "Todos os campos são obrigatórios.";
         exit;
     }
+
     try {
         $conn = connect();
-
         //verificando se ja existe um usuario com esse email
         $stmt = $conn->prepare("SELECT id_usuario FROM usuario WHERE email = ?");
         $stmt->bind_param("s", $email);
@@ -26,12 +27,12 @@ if (isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) &&
             exit;
         }
         $usuario = new User(
-            0, //o id será gerado automaticamente pelo banco mysql (AUTO_INCREMENT)
+            0,  //o id será gerado automaticamente pelo banco mysql (AUTO_INCREMENT)
             $nome,
             $email,
             $senha,
             new DateTime($data_nascimento),
-            1, // cod_tipo_perfil padrão para usuario
+            Perfil::USUARIO, //perfil padrão para usuario
             false
         );
 
@@ -45,6 +46,7 @@ if (isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) &&
 
         echo "Cadastro realizado com sucesso.";
         $conn->close();
+
     } catch (Exception $e) {
         echo "Erro ao cadastrar: " . $e->getMessage();
     }
