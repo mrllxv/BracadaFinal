@@ -12,4 +12,17 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
     }
 
     $conn = connect();
+
+    //inicializando o login do usuario
+    $login = new Login($conn);
+    //utilizando o metodo autenticar da classe login
+    if ($login->autenticar($email, $senha)) {
+        echo "Login realizado com sucesso.";
+    } else {
+        echo "E-mail ou senha inválidos.";
+    }
+
+    $conn->close();
+} else {
+    echo "Preencha todos os campos.";
 }
