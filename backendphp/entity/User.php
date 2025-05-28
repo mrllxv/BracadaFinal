@@ -1,5 +1,4 @@
 <?php
-require_once "../database/connection.php";
 require_once 'Perfil.php';
 
 class User
