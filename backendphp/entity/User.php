@@ -84,7 +84,7 @@ class User
     {
         $this->frase_secreta = $frase_secreta;
     }
-    
+
     public function setSenha(string $senha): void
     {
         $this->senha = password_hash($senha, PASSWORD_DEFAULT);
