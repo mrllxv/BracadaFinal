@@ -1,5 +1,5 @@
 <?php
-require_once 'Perfil.php';
+require_once '../enum/Perfil.php';
 
 class User
 {
