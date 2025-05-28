@@ -25,8 +25,11 @@ class Login
         //escapa caracteres especiais em uma string para uso em uma consulta SQL
         $email = mysqli_real_escape_string($this->conn, $email);
 
-        $sql = "SELECT * FROM usuarios WHERE email = '$email'";
-        $result = $this->conn->query($sql);
+        //utilizando stmt para evitar injecao sql direta, e otimizando a consulta + bind param passando o parametro "s" (string)
+        $stmt = $this->conn->prepare("SELECT * FROM usuario WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
         if ($result && $row = $result->fetch_assoc()) {
             //funçao nativa do php que verifica se uma senha digitada corresponde ao hash salvo no banco de dados
