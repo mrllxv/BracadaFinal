@@ -1,9 +1,16 @@
 <?php
 require_once '../database/connection.php';
 require_once '../entity/User.php';
-require_once '../entity/Perfil.php';
+require_once '../enum/Perfil.php';
 
-if (isset($_POST['nome'], $_POST['email'], $_POST['senha'], $_POST['data_nascimento'])) {
+// print_r("Nome: " . $_POST['nome']);
+// print_r("Email :" . $_POST['email']);
+// print_r("Senha : " . $_POST['senha']);
+// print_r("Data : " . $_POST['data_nascimento']);
+
+echo $_POST['nome'];
+
+if (isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['data_nascimento'])) {
 
     $nome = $_POST['nome'];
     $email = $_POST['email'];

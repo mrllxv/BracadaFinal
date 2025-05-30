@@ -1,0 +1,252 @@
+:root {
+  /* O que são váriaveis css? */
+  /* As variáveis de CSS, que também são chamadas de propriedades customizadas, trazem grandes benefícios 
+  e vão funcionar de forma bem semelhante às variáveis de linguagens de programação, ou seja, sua maior função é 
+  armazenar valores que serão utilizados posteriormente no código */
+
+  /* Syntax para a criação de uma váriavel css -> -- + [nome da váriavel] + valor da propriedade que você quer referenciar  */
+  /* Para mais informações, consultar a dcoumentação completa em: https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties */
+
+  /* FONTS */
+  /* --font-heading: "Fira Sans Condensed", sans-serif; */
+  --font-heading: "Oxygen", sans-serif;
+  --font-body: "PT Sans", sans-serif;
+
+  /* Colors */
+  --clr-gray-900: #28394b;
+  --clr-blue-800: #0055ad;
+  --clr-blue-700:#1866c0;
+  --clr-blue-300: #5f98fa;  
+  --clr-white-300: #f8f9fb;
+
+  --bg-dark: var(--clr-blue-700);
+  --bg-light:var(--clr-white-300);
+
+  --color-text-primary: var(--clr-gray-900);
+  --color-text-secondary: var(--clr-white-300);
+
+  /* Váriaveis para Espaçamento */
+  /* Espaçamentos em porcentagem (úteis para layouts fluidos) */
+  --spacing-percent-5: 5%;
+  --spacing-percent-10: 10%;
+  --spacing-percent-15: 15%;
+
+  --fs-lg: 3rem;
+
+   /* Escala baseada em múltiplos de 4px (1rem = 16px) */
+
+  --spacing-xs: 0.25rem;    /* 4px */
+  --spacing-sm: 0.5rem;     /* 8px */
+  --spacing-md: 1rem;       /* 16px */
+  --spacing-lg: 1.5rem;     /* 24px */
+  --spacing-xl: 2rem;       /* 32px */
+  --spacing-2xl: 2.5rem;    /* 40px */
+  --spacing-3xl: 4rem;      /* 64px */
+
+  /* Espaçamentos relativos adicionais */
+  --spacing-05: 0.05rem;    /* ~0.8px */
+  --spacing-1-25: 1.25rem;  /* 20px */
+  --spacing-1-75: 1.75rem;  /* 28px */
+  --spacing-2-25: 2.25rem;  /* 36px */
+
+  /* Breakpoints */
+  --breakpoint-xs: 20rem;   /* 320px */
+  --breakpoint-sm: 30rem;   /* 480px */
+  --breakpoint-md: 48rem;   /* 768px */
+  --breakpoint-lg: 64rem;   /* 1024px */
+  --breakpoint-xl: 80rem;   /* 1280px */
+  --breakpoint-2xl: 96rem;  /* 1536px */
+
+   /* Larguras máximas para containers, baseadas nos breakpoints */
+
+  --container-xs: 100%;       /* Para telas muito pequenas que necessitam do uso total */
+  --container-sm: 28rem;      /* 448px */
+  --container-md: 44rem;      /* 704px */
+  --container-lg: 60rem;      /* 960px */
+  --container-xl: 72rem;      /* 1152px */
+  --container-2xl: 80rem;     /* 1280px */
+  --container-full: 100vw;    /* Full width */
+}
+
+/* O que são Layers em css? */
+/* A regra @layer é uma regra recente no css e é utilizada para definir uma camada de cascata na página, também definindo a ordem de prioridade quando temos mais de uma camada. O beneficio dela é que podemos escrever um código CSS mais limpo e organizado por camadas do site e eliminamos a necessidade de ter vários arquivos css para diferentes páginas do nosso site, podendo centralizar as coisas em apenas um arquivo definidos por layers, assim também reduzimos o tempo de load dos estilos da página já que vão estar concentrados em apenas um lugar */
+
+/* Syntax : @layer nome-da-camada {regras css} */
+/* Para mais informações, consultar a documentação completa em: https://developer.mozilla.org/pt-BR/docs/Web/CSS/@layer */
+
+
+
+/* Definindp um reset css */
+/* Um reset Css como o próprio nome diz, é um arquivo onde ele redefine os estilos pré-formatados pelo html permitindo que o 
+usuário faça a estilização do zero */
+@layer reset_css {
+  /* reset.css */
+
+  /* 1. Remove margens, paddings e bordas padrões de todos elementos do html */
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* 2. Remove estilizações padrão de elementos de formulário */
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    appearance: none;
+  }
+
+  /* 3. Remove decoração de links */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* 4. Remove o estilo das listas não-ordenadas e das listas ordenadas */
+  ul,
+  ol {
+    list-style: none;
+  }
+
+  /* 5. Define altura da tela */
+  html,
+  body {
+    height: 100%;
+  }
+
+  /* 6. Usa fonte consistente e previne bugs com linha base */
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-family: system-ui, sans-serif;
+    background-color: #fff;
+    color: #000;
+  }
+
+  /* 7. Remove o espaçamento extra do elemento tabela */
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  /* 8. Imagens e mídias responsivas por padrão */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* 9. Remove aspas automáticas em blockquote e q */
+  blockquote,
+  q {
+    quotes: none;
+  }
+  blockquote::before,
+  blockquote::after,
+  q::before,
+  q::after {
+    content: "";
+  }
+
+  /* 10. Corrige fonte em elementos de formatação de código */
+  code,
+  pre {
+    font-family: monospace, monospace;
+  }
+
+  /* 11. Scroll suave (opcional) */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* A camada Global é onde nós concentramos estilos que são aplicados em diversas páginas no nosso projeto, como estilo da barra de navegação, footer, botões e etc. */
+/* Todo componente que se repetir em outras páginas além da home, a estilização deve entrar aqui nessa camada, caso contrário, podem criar uma camada individual para estilizar o componente em específico */
+
+@layer global {
+  
+  /* Definindo uma fonte especifíca para os títulos e sub-títulos */
+  h1, h2, h3 {
+    font-family: var(--font-heading);
+  }
+
+  /* Definindo propriedades para o body */
+  body {
+    font-family: var(--font-body);
+    background: var(--bg-light);
+    color: var(--color-text-primary);
+  }
+
+  /* Definindo propriedades para a classe hidden que é usada para esconder elementos da tela quando necessário */
+  .hidden {
+    display:none;
+  }
+
+  header {
+    height: var(--spacing-percent-15);
+    background: var(--bg-dark);
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-3xl);
+    padding: var(--spacing-sm) var(--spacing-lg);
+
+    box-shadow: 7px 7px 12px #0000003f;
+  }
+
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: var(--spacing-xl);
+    
+  }
+  
+  nav__title {
+    font-size: var(--fs-lg);
+  }
+
+  .nav__list {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: var(--spacing-3xl);
+    width: var(--container-md);
+  }
+
+  .nav__list-item {
+    width: 15%;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    padding: var(--spacing-md);
+    border-radius: var(--spacing-sm);
+    transition: all .5s ease-in-out;
+    cursor: pointer;
+  }
+
+
+  .nav__list-item--focus:focus, .nav__list-item--hover:hover {
+    background-color: var(--bg-light);
+    color: var(--color-text-primary);
+    transition: all .5s ease-in-out;
+  }
+
+}
