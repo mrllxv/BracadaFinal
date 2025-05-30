@@ -2,7 +2,6 @@
 class Pais{
     private int $id_pais;
     private string $nome;
-
     private string $bandeira;
 
     public function __construct(int $id_pais, string $nome, string $bandeira ){

@@ -5,17 +5,18 @@ class Atleta
     private string $nome;
     private string $genero;
     private DateTime $data_nascimento;
-    private int $id_pais;
-    private int $id_modalidade;
+    private int $cod_pais;
+    private int $cod_modalidade;
+    private int $cod_medalha;
 
-    public function __construct(int $id, string $nome, string $genero, DateTime $data_nascimento, int $id_pais, int $id_modalidade)
+    public function __construct(int $id, string $nome, string $genero, DateTime $data_nascimento, int $cod_pais, int $cod_modalidade)
     {
         $this->id = $id;
         $this->nome = $nome;
         $this->genero = $genero;
         $this->data_nascimento = $data_nascimento;
-        $this->id_pais = $id_pais;
-        $this->id_modalidade = $id_modalidade;
+        $this->cod_pais = $cod_pais;
+        $this->cod_modalidade = $cod_modalidade;
     }
 
     public function getId()
@@ -36,11 +37,15 @@ class Atleta
     }
     public function getIdPais(): int
     {
-        return $this->id_pais;
+        return $this->cod_pais;
     }
     public function getIdModalidade(): int
     {
-        return $this->id_modalidade;
+        return $this->cod_modalidade;
+    }
+
+    public function getIdMedalha(): int{
+        return $this->cod_medalha;
     }
 
     public function setNome(string $nome)
@@ -55,12 +60,12 @@ class Atleta
     {
         $this->data_nascimento = $data;
     }
-    public function setIdPais(int $id_pais)
+    public function setIdPais(int $cod_pais)
     {
-        $this->id_pais = $id_pais;
+        $this->cod_pais = $cod_pais;
     }
-    public function setIdModalidade(int $id_modalidade)
+    public function setIdModalidade(int $cod_modalidade)
     {
-        $this->id_modalidade = $id_modalidade;
+        $this->cod_modalidade = $cod_modalidade;
     }
 }
