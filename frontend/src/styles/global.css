@@ -249,4 +249,152 @@ usuário faça a estilização do zero */
     transition: all .5s ease-in-out;
   }
 
+  .nav__container-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-lg);
+  }
+
+  .button {
+    padding: var(--spacing-sm);
+    background-color: var(--bg-light);
+    color: var(--color-text-primary);
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+
+  .nav__buttons--hover:hover, .nav__buttons--focus:focus {
+    outline: none;
+    background-color: aliceblue;
+    color: var(--clr-gray-900);
+  }
+
+}
+
+@layer register {
+  .form-page {
+    background-color: var(--bg-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-container {
+    width: var(--container-md);
+    color: var(--clr-white-300);
+    background-color: var(--bg-dark);
+    padding: var(--spacing-3xl);
+    border-radius: 20px;
+    text-align: center;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2-25);
+    padding: var(--spacing-1-25);
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1-75);
+    padding-inline: var(--spacing-1-25);
+    padding-block: var(--spacing-md);
+    border: 1px solid #fff ;
+    border-radius: 8px;
+  }
+
+  input {
+    height: 100%;
+    width: 100%;
+    display: block;
+    cursor: pointer;
+  }
+
+  input::placeholder {
+    color: var(--clr-white-300);
+  }
+
+  input:focus {
+    color: #d7d7d7;
+  }
+
+  .forgot-password {
+    margin-left: var(--spacing-05);
+    text-align: left;
+    font-weight: bold;
+    outline: none;
+  }
+
+  .voltar {
+    outline: none;
+  }
+
+  .forgot-password:hover, .forgot-password:focus {
+    text-decoration: underline;
+  }
+  
+  .btn {
+    width: 40%;
+    font-weight: bold;
+    display: inline-block;
+    background-color: var(--bg-light);
+    color: var(--color-text-primary);
+    padding: var(--spacing-md);
+    cursor: pointer;
+    border-radius: 12px;
+    transition: all .8s ease-in-out;
+  }
+  
+  .btn_reset {
+    background-color: var(--bg-dark);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--clr-white-300);
+  }
+  
+  .btns__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .btn_reset:focus, .btn_reset:hover {
+    background-color: var(--bg-light);
+    color: var(--color-text-primary);
+    transition: all .4s ease-in-out;
+  }
+
+  .btn_submit:focus, .btn_submit:hover {
+    color: var(--color-text-secondary);
+    background-color: var(--bg-dark);
+    border: 1px solid var(--clr-white-300);
+    transition: all .4s ease-in-out;
+  }
+
+}
+
+/*  Criando a camada para concentrar os estilos de elementos individuais da homepage */ 
+@layer homepage {
+  .banner {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 100%;
+    height: calc(100vh - var(--spacing-percent-15));
+    position: relative;
+  }
+
+  .banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../assets/hero.webp");
+    background-size: cover;
+    background-position: bottom;
+    z-index: -1;
+    opacity: 1;
+  } 
 }
