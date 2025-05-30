@@ -236,7 +236,7 @@ usuário faça a estilização do zero */
     font-weight: bold;
     display: inline-block;
     text-align: center;
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
     border-radius: var(--spacing-sm);
     transition: all .5s ease-in-out;
     cursor: pointer;
@@ -261,7 +261,7 @@ usuário faça a estilização do zero */
     background-color: var(--bg-light);
     color: var(--color-text-primary);
     font-weight: bold;
-    border-radius: 12px;
+    border-radius: 8px;
     cursor: pointer;
   }
 
@@ -273,108 +273,6 @@ usuário faça a estilização do zero */
 
 }
 
-@layer register {
-  .form-page {
-    background-color: var(--bg-light);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .form-container {
-    width: var(--container-md);
-    color: var(--clr-white-300);
-    background-color: var(--bg-dark);
-    padding: var(--spacing-3xl);
-    border-radius: 20px;
-    text-align: center;
-  }
-
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-2-25);
-    padding: var(--spacing-1-25);
-  }
-
-  label {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-1-75);
-    padding-inline: var(--spacing-1-25);
-    padding-block: var(--spacing-md);
-    border: 1px solid #fff ;
-    border-radius: 8px;
-  }
-
-  input {
-    height: 100%;
-    width: 100%;
-    display: block;
-    cursor: pointer;
-  }
-
-  input::placeholder {
-    color: var(--clr-white-300);
-  }
-
-  input:focus {
-    color: #d7d7d7;
-  }
-
-  .forgot-password {
-    margin-left: var(--spacing-05);
-    text-align: left;
-    font-weight: bold;
-    outline: none;
-  }
-
-  .voltar {
-    outline: none;
-  }
-
-  .forgot-password:hover, .forgot-password:focus {
-    text-decoration: underline;
-  }
-  
-  .btn {
-    width: 40%;
-    font-weight: bold;
-    display: inline-block;
-    background-color: var(--bg-light);
-    color: var(--color-text-primary);
-    padding: var(--spacing-md);
-    cursor: pointer;
-    border-radius: 12px;
-    transition: all .8s ease-in-out;
-  }
-  
-  .btn_reset {
-    background-color: var(--bg-dark);
-    color: var(--color-text-secondary);
-    border: 1px solid var(--clr-white-300);
-  }
-  
-  .btns__container {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
-
-  .btn_reset:focus, .btn_reset:hover {
-    background-color: var(--bg-light);
-    color: var(--color-text-primary);
-    transition: all .4s ease-in-out;
-  }
-
-  .btn_submit:focus, .btn_submit:hover {
-    color: var(--color-text-secondary);
-    background-color: var(--bg-dark);
-    border: 1px solid var(--clr-white-300);
-    transition: all .4s ease-in-out;
-  }
-
-}
 
 /*  Criando a camada para concentrar os estilos de elementos individuais da homepage */ 
 @layer homepage {
@@ -387,14 +285,144 @@ usuário faça a estilização do zero */
     position: relative;
   }
 
-  .banner::before {
+  .body-home{
+    position: relative;
+  }
+
+  .body-home::before {
     content: "";
     position: absolute;
     inset: 0;
     background-image: url("../assets/hero.webp");
+    /* filter: drop-shadow(16px 20px 20px red) opacity(20%) invert(100%); */
+    filter: brightness(40%);
+    transform: rotateY(-180deg);
     background-size: cover;
     background-position: bottom;
     z-index: -1;
     opacity: 1;
   } 
+
+  .header-home{
+    background: linear-gradient(to bottom, #232526, transparent);
+    box-shadow: none;
+  }
 }
+
+    /* Aqui concentramos todos os estilos das páginas que contém formulários de validação de login, como a de registro, login e o reset da senha do usuário */
+    
+    @layer formsPages {
+      .form-page {
+        background-color: var(--bg-light);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    
+      .form-container {
+        width: var(--container-md);
+        color: var(--clr-white-300);
+        background-color: var(--bg-dark);
+        padding: var(--spacing-3xl);
+        border-radius: 20px;
+        text-align: center;
+      }
+    
+      .form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-2-25);
+        padding: var(--spacing-1-25);
+      }
+    
+      label {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-1-75);
+        padding-inline: var(--spacing-1-25);
+        padding-block: var(--spacing-md);
+        border: 1px solid #fff ;
+        border-radius: 8px;
+      }
+    
+      input {
+        height: 100%;
+        width: 100%;
+        display: block;
+        cursor: pointer;
+      }
+    
+      input::placeholder {
+        color: var(--clr-white-300);
+      }
+    
+      input:focus {
+        color: #d7d7d7;
+      }
+    
+      .forgot-password {
+        margin-left: var(--spacing-05);
+        text-align: left;
+        font-weight: bold;
+        outline: none;
+      }
+    
+      .voltar {
+        outline: none;
+      }
+    
+      
+      .fa-house {
+        text-align: center;
+        font-size: 2rem;
+        margin-block: 1.5rem;
+        transition: color .2s ease-in;
+      }
+    
+      .fa-house:hover {
+        color: var(--clr-gray-900);
+        transition: color .4s ease-in;
+      }
+    
+      .forgot-password:hover, .forgot-password:focus {
+        text-decoration: underline;
+      }
+      
+      .btn {
+        width: 40%;
+        font-weight: bold;
+        display: inline-block;
+        background-color: var(--bg-light);
+        color: var(--color-text-primary);
+        padding: var(--spacing-md);
+        cursor: pointer;
+        border-radius: 12px;
+        transition: all .8s ease-in-out;
+      }
+      
+      .btn_reset {
+        background-color: var(--bg-dark);
+        color: var(--color-text-secondary);
+        border: 1px solid var(--clr-white-300);
+      }
+      
+      .btns__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+    
+      .btn_reset:focus, .btn_reset:hover {
+        background-color: var(--bg-light);
+        color: var(--color-text-primary);
+        transition: all .4s ease-in-out;
+      }
+    
+      .btn_submit:focus, .btn_submit:hover {
+        color: var(--color-text-secondary);
+        background-color: var(--bg-dark);
+        border: 1px solid var(--clr-white-300);
+        transition: all .4s ease-in-out;
+      }
+    
+    }
