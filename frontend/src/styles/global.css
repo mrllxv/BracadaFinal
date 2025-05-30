@@ -15,12 +15,12 @@
   /* Colors */
   --clr-gray-900: #28394b;
   --clr-blue-800: #0055ad;
-  --clr-blue-700:#1866c0;
-  --clr-blue-300: #5f98fa;  
+  --clr-blue-700: #1866c0;
+  --clr-blue-300: #5f98fa;
   --clr-white-300: #f8f9fb;
 
   --bg-dark: var(--clr-blue-700);
-  --bg-light:var(--clr-white-300);
+  --bg-light: var(--clr-white-300);
 
   --color-text-primary: var(--clr-gray-900);
   --color-text-secondary: var(--clr-white-300);
@@ -33,39 +33,39 @@
 
   --fs-lg: 3rem;
 
-   /* Escala baseada em múltiplos de 4px (1rem = 16px) */
+  /* Escala baseada em múltiplos de 4px (1rem = 16px) */
 
-  --spacing-xs: 0.25rem;    /* 4px */
-  --spacing-sm: 0.5rem;     /* 8px */
-  --spacing-md: 1rem;       /* 16px */
-  --spacing-lg: 1.5rem;     /* 24px */
-  --spacing-xl: 2rem;       /* 32px */
-  --spacing-2xl: 2.5rem;    /* 40px */
-  --spacing-3xl: 4rem;      /* 64px */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem; /* 8px */
+  --spacing-md: 1rem; /* 16px */
+  --spacing-lg: 1.5rem; /* 24px */
+  --spacing-xl: 2rem; /* 32px */
+  --spacing-2xl: 2.5rem; /* 40px */
+  --spacing-3xl: 4rem; /* 64px */
 
   /* Espaçamentos relativos adicionais */
-  --spacing-05: 0.05rem;    /* ~0.8px */
-  --spacing-1-25: 1.25rem;  /* 20px */
-  --spacing-1-75: 1.75rem;  /* 28px */
-  --spacing-2-25: 2.25rem;  /* 36px */
+  --spacing-05: 0.05rem; /* ~0.8px */
+  --spacing-1-25: 1.25rem; /* 20px */
+  --spacing-1-75: 1.75rem; /* 28px */
+  --spacing-2-25: 2.25rem; /* 36px */
 
   /* Breakpoints */
-  --breakpoint-xs: 20rem;   /* 320px */
-  --breakpoint-sm: 30rem;   /* 480px */
-  --breakpoint-md: 48rem;   /* 768px */
-  --breakpoint-lg: 64rem;   /* 1024px */
-  --breakpoint-xl: 80rem;   /* 1280px */
-  --breakpoint-2xl: 96rem;  /* 1536px */
+  --breakpoint-xs: 20rem; /* 320px */
+  --breakpoint-sm: 30rem; /* 480px */
+  --breakpoint-md: 48rem; /* 768px */
+  --breakpoint-lg: 64rem; /* 1024px */
+  --breakpoint-xl: 80rem; /* 1280px */
+  --breakpoint-2xl: 96rem; /* 1536px */
 
-   /* Larguras máximas para containers, baseadas nos breakpoints */
+  /* Larguras máximas para containers, baseadas nos breakpoints */
 
-  --container-xs: 100%;       /* Para telas muito pequenas que necessitam do uso total */
-  --container-sm: 28rem;      /* 448px */
-  --container-md: 44rem;      /* 704px */
-  --container-lg: 60rem;      /* 960px */
-  --container-xl: 72rem;      /* 1152px */
-  --container-2xl: 80rem;     /* 1280px */
-  --container-full: 100vw;    /* Full width */
+  --container-xs: 100%; /* Para telas muito pequenas que necessitam do uso total */
+  --container-sm: 28rem; /* 448px */
+  --container-md: 44rem; /* 704px */
+  --container-lg: 60rem; /* 960px */
+  --container-xl: 72rem; /* 1152px */
+  --container-2xl: 80rem; /* 1280px */
+  --container-full: 100vw; /* Full width */
 }
 
 /* O que são Layers em css? */
@@ -73,8 +73,6 @@
 
 /* Syntax : @layer nome-da-camada {regras css} */
 /* Para mais informações, consultar a documentação completa em: https://developer.mozilla.org/pt-BR/docs/Web/CSS/@layer */
-
-
 
 /* Definindp um reset css */
 /* Um reset Css como o próprio nome diz, é um arquivo onde ele redefine os estilos pré-formatados pelo html permitindo que o 
@@ -178,9 +176,10 @@ usuário faça a estilização do zero */
 /* Todo componente que se repetir em outras páginas além da home, a estilização deve entrar aqui nessa camada, caso contrário, podem criar uma camada individual para estilizar o componente em específico */
 
 @layer global {
-  
   /* Definindo uma fonte especifíca para os títulos e sub-títulos */
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-family: var(--font-heading);
   }
 
@@ -193,7 +192,7 @@ usuário faça a estilização do zero */
 
   /* Definindo propriedades para a classe hidden que é usada para esconder elementos da tela quando necessário */
   .hidden {
-    display:none;
+    display: none;
   }
 
   header {
@@ -209,17 +208,15 @@ usuário faça a estilização do zero */
     box-shadow: 7px 7px 12px #0000003f;
   }
 
-  
-  .nav {
+  .header__nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     gap: var(--spacing-xl);
-    
   }
-  
-  nav__title {
+
+  .nav__title {
     font-size: var(--fs-lg);
   }
 
@@ -238,15 +235,15 @@ usuário faça a estilização do zero */
     text-align: center;
     padding: var(--spacing-sm);
     border-radius: var(--spacing-sm);
-    transition: all .5s ease-in-out;
+    transition: all 0.5s ease-in-out;
     cursor: pointer;
   }
 
-
-  .nav__list-item--focus:focus, .nav__list-item--hover:hover {
+  .nav__list-item--focus:focus,
+  .nav__list-item--hover:hover {
     background-color: var(--bg-light);
     color: var(--color-text-primary);
-    transition: all .5s ease-in-out;
+    transition: all 0.5s ease-in-out;
   }
 
   .nav__container-buttons {
@@ -265,16 +262,15 @@ usuário faça a estilização do zero */
     cursor: pointer;
   }
 
-  .nav__buttons--hover:hover, .nav__buttons--focus:focus {
+  .nav__buttons--hover:hover,
+  .nav__buttons--focus:focus {
     outline: none;
     background-color: aliceblue;
     color: var(--clr-gray-900);
   }
-
 }
 
-
-/*  Criando a camada para concentrar os estilos de elementos individuais da homepage */ 
+/*  Criando a camada para concentrar os estilos de elementos individuais da homepage */
 @layer homepage {
   .banner {
     display: flex;
@@ -285,7 +281,7 @@ usuário faça a estilização do zero */
     position: relative;
   }
 
-  .body-home{
+  .body-home {
     position: relative;
   }
 
@@ -301,128 +297,136 @@ usuário faça a estilização do zero */
     background-position: bottom;
     z-index: -1;
     opacity: 1;
-  } 
+  }
 
-  .header-home{
+  .header-home {
     background: linear-gradient(to bottom, #232526, transparent);
     box-shadow: none;
   }
 }
 
-    /* Aqui concentramos todos os estilos das páginas que contém formulários de validação de login, como a de registro, login e o reset da senha do usuário */
-    
-    @layer formsPages {
-      .form-page {
-        background-color: var(--bg-light);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    
-      .form-container {
-        width: var(--container-md);
-        color: var(--clr-white-300);
-        background-color: var(--bg-dark);
-        padding: var(--spacing-3xl);
-        border-radius: 20px;
-        text-align: center;
-      }
-    
-      .form {
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-2-25);
-        padding: var(--spacing-1-25);
-      }
-    
-      label {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-1-75);
-        padding-inline: var(--spacing-1-25);
-        padding-block: var(--spacing-md);
-        border: 1px solid #fff ;
-        border-radius: 8px;
-      }
-    
-      input {
-        height: 100%;
-        width: 100%;
-        display: block;
-        cursor: pointer;
-      }
-    
-      input::placeholder {
-        color: var(--clr-white-300);
-      }
-    
-      input:focus {
-        color: #d7d7d7;
-      }
-    
-      .forgot-password {
-        margin-left: var(--spacing-05);
-        text-align: left;
-        font-weight: bold;
-        outline: none;
-      }
-    
-      .voltar {
-        outline: none;
-      }
-    
-      
-      .fa-house {
-        text-align: center;
-        font-size: 2rem;
-        margin-block: 1.5rem;
-        transition: color .2s ease-in;
-      }
-    
-      .fa-house:hover {
-        color: var(--clr-gray-900);
-        transition: color .4s ease-in;
-      }
-    
-      .forgot-password:hover, .forgot-password:focus {
-        text-decoration: underline;
-      }
-      
-      .btn {
-        width: 40%;
-        font-weight: bold;
-        display: inline-block;
-        background-color: var(--bg-light);
-        color: var(--color-text-primary);
-        padding: var(--spacing-md);
-        cursor: pointer;
-        border-radius: 12px;
-        transition: all .8s ease-in-out;
-      }
-      
-      .btn_reset {
-        background-color: var(--bg-dark);
-        color: var(--color-text-secondary);
-        border: 1px solid var(--clr-white-300);
-      }
-      
-      .btns__container {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-      }
-    
-      .btn_reset:focus, .btn_reset:hover {
-        background-color: var(--bg-light);
-        color: var(--color-text-primary);
-        transition: all .4s ease-in-out;
-      }
-    
-      .btn_submit:focus, .btn_submit:hover {
-        color: var(--color-text-secondary);
-        background-color: var(--bg-dark);
-        border: 1px solid var(--clr-white-300);
-        transition: all .4s ease-in-out;
-      }
-    
-    }
+/* Aqui concentramos todos os estilos das páginas que contém formulários de validação de login, como a de registro, login e o reset da senha do usuário */
+
+@layer formsPages {
+  .form-page {
+    background-color: var(--bg-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-container {
+    width: var(--container-md);
+    color: var(--clr-white-300);
+    background-color: var(--bg-dark);
+    padding: var(--spacing-3xl);
+    border-radius: 20px;
+    text-align: center;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2-25);
+    padding: var(--spacing-1-25);
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1-75);
+    padding-inline: var(--spacing-1-25);
+    padding-block: var(--spacing-md);
+    border: 1px solid #fff;
+    border-radius: 8px;
+  }
+
+  input {
+    height: 100%;
+    width: 100%;
+    display: block;
+    cursor: pointer;
+  }
+
+  input::placeholder {
+    color: var(--clr-white-300);
+  }
+
+  input:focus {
+    color: #d7d7d7;
+  }
+
+  .forgot-password {
+    margin-left: var(--spacing-05);
+    text-align: left;
+    font-weight: bold;
+    outline: none;
+  }
+
+  .voltar {
+    outline: none;
+  }
+
+  .fa-house {
+    text-align: center;
+    font-size: 2rem;
+    margin-block: 1.5rem;
+    transition: color 0.2s ease-in;
+  }
+
+  .fa-house:hover {
+    color: var(--clr-gray-900);
+    transition: color 0.4s ease-in;
+  }
+
+  .forgot-password:hover,
+  .forgot-password:focus {
+    text-decoration: underline;
+  }
+
+  .btn {
+    width: 40%;
+    font-weight: bold;
+    display: inline-block;
+    background-color: var(--bg-light);
+    color: var(--color-text-primary);
+    padding: var(--spacing-md);
+    cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.8s ease-in-out;
+  }
+
+  .btn_reset {
+    background-color: var(--bg-dark);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--clr-white-300);
+  }
+
+  .btns__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .btn_reset:focus,
+  .btn_reset:hover {
+    background-color: var(--bg-light);
+    color: var(--color-text-primary);
+    transition: all 0.4s ease-in-out;
+  }
+
+  .btn_submit:focus,
+  .btn_submit:hover {
+    color: var(--color-text-secondary);
+    background-color: var(--bg-dark);
+    border: 1px solid var(--clr-white-300);
+    transition: all 0.4s ease-in-out;
+  }
+}
+
+
+/* Nesta layer abaixo, concentramos os estilos da nossa página de galeria */
+
+@layer gallery {
+
+}
